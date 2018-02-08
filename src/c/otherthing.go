@@ -1,5 +1,5 @@
 package c
 
-type OtherThing struct {
-	Badgers string
+func CFunc() string {
+	return "Badgers"
 }

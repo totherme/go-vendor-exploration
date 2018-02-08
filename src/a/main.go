@@ -7,6 +7,5 @@ import (
 )
 
 func main() {
-	thing := b.Thing{Content: c.OtherThing{Badgers: "Foo"}}
-	fmt.Println("Running A: ", thing)
+	fmt.Println("Running A: ", b.BFunc(), c.CFunc())
 }

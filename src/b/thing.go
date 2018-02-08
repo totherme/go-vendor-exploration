@@ -2,6 +2,6 @@ package b
 
 import "c"
 
-type Thing struct {
-	Content c.OtherThing
+func BFunc() string {
+	return c.CFunc()
 }
