@@ -8,14 +8,14 @@
   revision = "64c187a7ed865395246dd50e1223f6493393b7ef"
 
 [[projects]]
-  branch = "master"
+  branch = "version-2"
   name = "github.com/totherme/govendorexplorationc"
   packages = ["."]
-  revision = "0e89d2461192a2e54f5d2684b2a6e9f46e7135f2"
+  revision = "f84e3edb7c3836ebd5bd9766a9c94c8ce22bc6b0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "0fc8b24c3c138b39818ba516e42f18505df1fac9e3bbff4ffa35530e2c014291"
+  inputs-digest = "b73223964ef0b49973c16cc61a99e2a14a958beb84bfad2f987da9996e11312f"
   solver-name = "gps-cdcl"
   solver-version = 1

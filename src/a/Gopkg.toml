@@ -26,5 +26,5 @@
   name = "github.com/totherme/govendorexplorationb"
 
 [[constraint]]
-  branch = "master"
+  branch = "version-2"
   name = "github.com/totherme/govendorexplorationc"
