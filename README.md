@@ -82,6 +82,39 @@ messages in the `nested-vendoring-runtime-behaviour` branch.
 # With One Tool
 ## With `dep`
 
+In these experiments, we make use of two additional github repos: one for
+[module B](https://github.com/totherme/govendorexplorationb), and one for
+[module C](https://github.com/totherme/govendorexplorationc). We submodule
+those into this `$GOPATH` repo as if we had performed a `go get`, and we
+experiment with using `dep` to vendor them in to our program in `a`.
+
+In our simplest experiment in branch `vendoring-with-dep`, we follow the same
+path we followed in the `vendoring-runtime-behaviour` experiment, only using
+`dep` to perform our vendoring, instead of doing it by hand. In this case `dep`
+actually saves us from some unexpected behaviour, by ignoring the `$GOPATH`,
+and always preferring the default branch of whatever it fetches unless we
+explicitly ask for something else. Since `dep` flattens all imports, we are
+unable to perform an equivalent of the `nested-vendoring-runtime-behaviour`
+experiment.
+
+In `vendoring-specific-versions-with-dep` we learn how to cause `dep ensure` to
+fail. We ask it for constraints which cannot be solved. We then relax the
+constraints of the importing module (module `a`), to allow `dep` to find a
+solution. In `vendoring-deliberately-vague-versions-with-dep` we solve the same
+problem, but this time by relaxing the constraints of the imported module (in
+this case `b`).
+
+Relaxing either constraint seems to be good enough for `dep`. If you have
+control over either importing or imported modules, and you are able to ensure
+compatibility with a wide range of common dependencies, it is probably worth
+explicitly relaxing your constraints in your `Gopkg.toml`
+
+Finally, in the last commit of
+`vendoring-deliberately-vague-versions-with-dep`, we check that having 0
+constraints on a dependency does not mean pretending we don't have that
+dependency at all. It just means that `dep` can pick whatever version of that
+dependency it wants.
+
 ## With `godep`
 
 # With Multiple Tools
