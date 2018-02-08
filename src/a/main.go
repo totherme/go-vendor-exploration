@@ -1,12 +1,12 @@
 package main
 
 import (
-	"b"
-	"c"
 	"fmt"
+
+	b "github.com/totherme/govendorexplorationb"
+	c "github.com/totherme/govendorexplorationc"
 )
 
 func main() {
-	thing := b.Thing{Content: c.OtherThing{Badgers: "Foo"}}
-	fmt.Println("Running A: ", thing)
+	fmt.Println("Running A: ", b.BFunc(), c.CFunc())
 }

@@ -1,0 +1,12 @@
+[submodule "src/src/github.com/totherme/govendorexplorationb"]
+	path = src/src/github.com/totherme/govendorexplorationb
+	url = https://github.com/totherme/govendorexplorationb
+[submodule "src/src/github.com/totherme/govendorexplorationc"]
+	path = src/src/github.com/totherme/govendorexplorationc
+	url = https://github.com/totherme/govendorexplorationc
+[submodule "src/github.com/totherme/govendorexplorationc"]
+	path = src/github.com/totherme/govendorexplorationc
+	url = https://github.com/totherme/govendorexplorationc
+[submodule "src/github.com/totherme/govendorexplorationb"]
+	path = src/github.com/totherme/govendorexplorationb
+	url = https://github.com/totherme/govendorexplorationb
