@@ -1,5 +1,5 @@
 package govendorexplorationc
 
 func CFunc() string {
-	return "Badgers"
+	return "Ostriches"
 }

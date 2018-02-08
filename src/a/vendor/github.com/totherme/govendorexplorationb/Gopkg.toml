@@ -22,6 +22,5 @@
 
 
 [[constraint]]
-  branch = "vendoring-specific-versions-with-dep"
-  name = "github.com/totherme/govendorexplorationb"
-
+  branch = "version-2"
+  name = "github.com/totherme/govendorexplorationc"

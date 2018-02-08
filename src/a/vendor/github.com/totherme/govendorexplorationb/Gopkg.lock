@@ -2,12 +2,6 @@
 
 
 [[projects]]
-  branch = "vendoring-specific-versions-with-dep"
-  name = "github.com/totherme/govendorexplorationb"
-  packages = ["."]
-  revision = "a007b5d83560401e729777c4817c1fb6b0b8ca57"
-
-[[projects]]
   branch = "version-2"
   name = "github.com/totherme/govendorexplorationc"
   packages = ["."]
@@ -16,6 +10,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "1b0d48e5fcc2c47b536a8af0a6fdef9618c9184c4d32825e6ab1b4f94de1ca66"
+  inputs-digest = "6f70fad797485a180d8747f2653e82a7beaf7a23ff61c6a3e2200c1dcabf7ade"
   solver-name = "gps-cdcl"
   solver-version = 1
