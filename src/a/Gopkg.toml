@@ -22,7 +22,7 @@
 
 
 [[constraint]]
-  branch = "master"
+  branch = "vendoring-specific-versions-with-dep"
   name = "github.com/totherme/govendorexplorationb"
 
 [[constraint]]
