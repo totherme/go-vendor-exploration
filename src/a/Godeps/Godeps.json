@@ -1,0 +1,18 @@
+{
+	"ImportPath": "a",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v79",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/totherme/govendorexplorationb",
+			"Rev": "97f5aca05a476e2e011c7b1847f8ef5527a041ad"
+		},
+		{
+			"ImportPath": "github.com/totherme/govendorexplorationc",
+			"Rev": "f84e3edb7c3836ebd5bd9766a9c94c8ce22bc6b0"
+		}
+	]
+}
