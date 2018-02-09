@@ -117,5 +117,24 @@ dependency it wants.
 
 ## With `godep`
 
+`godep` will, unlike `dep` always use the packages as they are in the
+`$GOPATH`, in the exactly version as they are checked out there.
+
+In `vendoring-with-godep` we show that, if you you have a dependency which uses
+`godep`, it is very important to do a `godep restore` to make sure you have the
+same versions of transient dependencies in the `$GOPATH` as they exist in a
+dependency's vendor tree. If you don't do that and you start vendoring a
+dependency with a vendor tree, `godep` will just go and use whatever version it
+finds in `$GOPATH` and generates a flat vendor tree (no nested vendor
+directories).
+
+If it cannot find a dependency in your `$GOPATH` because you only have it in a
+vendor tree of some dependency, `godep save` will just bails out.
+
+Also `godep` does not warn you if you have different versions in a dependency's
+vendor tree and in your `$GOPATH`. It does not do checks, again, it just uses
+what's available in the `$GOPATH`.
+
 # With Multiple Tools
+
 ## When vendoring a `dep`-managed library into a `godep`-managed project
