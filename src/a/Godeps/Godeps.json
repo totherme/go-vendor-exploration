@@ -8,11 +8,15 @@
 	"Deps": [
 		{
 			"ImportPath": "github.com/totherme/govendorexplorationb",
-			"Rev": "97f5aca05a476e2e011c7b1847f8ef5527a041ad"
+			"Rev": "64c187a7ed865395246dd50e1223f6493393b7ef"
 		},
 		{
 			"ImportPath": "github.com/totherme/govendorexplorationc",
 			"Rev": "0e89d2461192a2e54f5d2684b2a6e9f46e7135f2"
+		},
+		{
+			"ImportPath": "github.com/totherme/govendorexplorationb/vendor/github.com/totherme/govendorexplorationc",
+			"Rev": "64c187a7ed865395246dd50e1223f6493393b7ef"
 		}
 	]
 }
