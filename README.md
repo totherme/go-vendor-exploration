@@ -138,3 +138,57 @@ what's available in the `$GOPATH`.
 # With Multiple Tools
 
 ## When vendoring a `dep`-managed library into a `godep`-managed project
+
+Vendoring the `dep`-managed package into the `godep` managed package is shown
+in `vendoring-dep-project-into-godep-project`.
+
+When initially vendoring the `dep` package into a `godep` package, `godep`
+completely removes the vendor directory and from the dependency and generates a
+flat vendor tree. However, `gedep` of course has no idea about versioning of
+dependencies in the `dep`-managed package. Thus, when flattening the vendor
+tree `godep` picks again whatever version of dependencies are checked out in
+`$GOPATH`, regardless of which version would have actually been configured by
+`dep`.
+This means: the `dep`-managed package has to be super flexible on which
+versions of its dependencies it eventually ends up with. It's not in the
+control of `dep` anymore -- and `godep` just uses the version from the
+`$GOPATH`. It might be necessary to test various versions of your dependencies
+in your CI.
+
+Updating dependencies with `godep update ...` seems [to be
+broken](https://github.com/tools/godep/issues/498). In our experiment in
+`vendoring-dep-project-into-godep-project-fail` we tried to do so, and see that
+`godep` generates a nested vendor tree and vendors two versions of the
+dependency which is also in the vendor tree of another package. It vendors once
+from the `$GOPATH` and once from that other vendor directory. As described, it
+does not flatten the vendor tree anymore. That means that it probably is
+easiest, to completely delete the `vendor` directory and vendor from scratch
+with a `godep save ...`.
+
+# `godep` & `git` Submodules
+
+When setting up these test repositories, at some point in time we did a `go get
+...` of our dependencies, module A & module B. This essentially placed a git
+repository somewhere into our `$GOPATH`, which itself is a git repository.
+Therefore we used `git submodule add ...` to "link" the dependencies with the
+main repository. Interestingly enough we now ended up with a full blown git
+repository for the submodules with a `.git` directory instead of the expected
+`.git` file with just a pointer to the main repository's git directory.
+However, everything still seemed to have worked as expected so we didn't even notice.
+
+Then, after some experiments and changing, deleting and re-init of submodules
+we eventually ended up with a mixed case where one submodule had a real
+directory in `.git`, the other one had a file in `.git`.
+Now things started to become strange, `godep` seemed to have been broken where
+it just worked before, without no notable difference -- git would have told us
+if things would have changed; or so we thought.
+
+Eventually it turned out, that `godep` checks if a dependency is actually of
+some sort of VCS. It actually checks [if a certain directory is
+present](https://github.com/tools/godep/blob/ce0bfadeb516ab23c845a85c4b0eae421ec9614b/vendor/golang.org/x/tools/go/vcs/vcs.go#L350).
+Now that git submodules normally won't have those `.git` directories, `godep`
+won't work with dependencies that are submoduled in. However, as git seems to
+be happy when a submodule has a `.git` directory, one can make `godep` and
+submodules work together.
+We do not recommend that, because a user needs to do extra steps after cloning,
+however for the sake of this exploration it should be OK.
